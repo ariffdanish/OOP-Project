@@ -4,7 +4,10 @@ import java.util.List;
 public class Inventory {
     private List<Product> products;
 
-    Inventory(List<Product> products) {
+    public Inventory(){
+        
+    }
+   Inventory(List<Product> products) {
         this.products = new ArrayList<Product>();
     }
 
