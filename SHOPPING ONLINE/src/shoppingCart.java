@@ -35,8 +35,12 @@ public class shoppingCart {
             System.out.println("Product Name: "+pList[i].getName()+"\n Quantity: "+pList[i].getQuantity()+"\n Total: "+pList[i].getQuantity()*pList[i].getPrice());
         }
     }
-    public float confirmord()
+
+    public float getcost()
     {
         return totalCost;
     }
+
+   
+    
 }

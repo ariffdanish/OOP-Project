@@ -1,25 +1,19 @@
 public class Order extends shoppingCart {
 
     private int orderId;
-    
-    private String date;
-    
     private float tcost;
-    private shoppingCart concart;
+    private shoppingCart orditem;
 
-    Order(int o,  String d, float c)
+    Order(int o, shoppingCart concart)
     {
         orderId = o;
-        
-        date = d;
-        
-        tcost = c;
+        orditem  = concart;
+        tcost = orditem.getcost();
     }
-
     public void displayord()
     {
         displayCart();
-        System.out.println("Total Cost: "+confirmord());
+        System.out.println("Total Cost: "+tcost);
     }
     
 }
