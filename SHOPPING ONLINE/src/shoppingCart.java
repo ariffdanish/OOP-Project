@@ -27,4 +27,16 @@ public class shoppingCart {
             }
         }
     }
+
+    public void displayCart()
+    {
+        for(int i = 0;i<t;i++)
+        {
+            System.out.println("Product Name: "+pList[i].getName()+"\n Quantity: "+pList[i].getQuantity()+"\n Total: "+pList[i].getQuantity()*pList[i].getPrice());
+        }
+    }
+    public float confirmord()
+    {
+        return totalCost;
+    }
 }
