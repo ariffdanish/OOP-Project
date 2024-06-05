@@ -2,17 +2,14 @@ public class Admin{
     private int aId;
     private String aName;
     private String aEmail;
-    private int aPhone;
-    private String password;
+    private String aPhone;
     private Inventory inventory = new Inventory();
 
-    public Admin(int id, String n, String e, int p, String pwd, Inventory i){
+    public Admin(int id, String n, String e, String p){
         aId=id;
         aName=n;
         aEmail=e;
         aPhone=p;
-        password=pwd;
-        inventory=i;
     }
 
     public void setId(int id){
@@ -27,12 +24,8 @@ public class Admin{
         aEmail=e;
     }
 
-    public void setPhone(int p){
+    public void setPhone(String p){
         aPhone=p;
-    }
-
-    public void setPassword(String pwd){
-        password=pwd;
     }
 
     public int getId(){
@@ -47,11 +40,12 @@ public class Admin{
         return aEmail;
     }
 
-    public int getPhone(){
+    public String getPhone(){
         return aPhone;
     }
 
     public void displayAdmin(){
+
         System.out.println("Admin Infomation: ");
         System.out.println("ID: "+aId);
         System.out.println("Name: "+aName);

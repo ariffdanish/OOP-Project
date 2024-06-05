@@ -14,6 +14,10 @@ public class Customer {
         address = a;
     }
 
+    public String getName(){
+        return cname;
+    }
+
     public void displaycust()
     {
         System.out.println("Customer Information: ");
