@@ -3,12 +3,13 @@ import javax.swing.JOptionPane;
 public class SHOPPING_Online {
 
      private static Admin[] admins = {
-            new Admin(1, "admin1", "Admin1@gmail.com", "01123456"),
-            new Admin(2, "admin2", "Admin2@gmail.com", "08765678")
+            new Admin(123, "admin1", "Admin1@gmail.com", "01123456"),
+            new Admin(356, "admin2", "Admin2@gmail.com", "08765678")
         };
     
         private static Customer[] customers = {
-            new Customer(1, "customer1", "customer1@gmail.com", "No5, Jalan meranti,Taman meranti,4567 Johor Bahru")
+            new Customer(678, "customer1", "customer1@gmail.com", "No5, Jalan meranti,Taman meranti,4567 Johor Bahru"),
+            new Customer(556, "customer2", "customer2@gmail.com", "No10, Jalan angkasa,Taman angkasa,4567 Johor Bahru")
         };
     
         public static void main(String[] args) {
