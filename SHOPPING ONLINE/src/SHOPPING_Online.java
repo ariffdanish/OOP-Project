@@ -51,20 +51,17 @@ public class SHOPPING_Online {
         }
     
         private static void showAdminMainMenu() {
-            Object[] options = {"Inventory", "Info", "Product"};
+            Object[] options = {"Personal Info","Inventory"};
             int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Admin",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
     
             switch (choice) {
                 case 0:
-                    JOptionPane.showMessageDialog(null, "Inventory selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
-                    break;
+                JOptionPane.showMessageDialog(null, "Personal Info selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                break;
                 case 1:
-                    JOptionPane.showMessageDialog(null, "Info selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
-                    break;
-                case 2:
-                    JOptionPane.showMessageDialog(null, "Product selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
-                    break;
+                JOptionPane.showMessageDialog(null, "Inventory selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                break;
                 default:
                     JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
                     break;
@@ -72,20 +69,21 @@ public class SHOPPING_Online {
         }
     
         private static void showCustomerMainMenu() {
-            Object[] options = {"Browse Products", "View Cart", "Order History"};
+            Object[] options = {"Personal Info","Browse Products", "View Cart"};
             int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Customer",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
     
             switch (choice) {
                 case 0:
-                    JOptionPane.showMessageDialog(null, "Browse Products selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Personal Info selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 case 1:
-                    JOptionPane.showMessageDialog(null, "View Cart selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Browse Products selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 case 2:
-                    JOptionPane.showMessageDialog(null, "Order History selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "View Cart selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
                     break;
+               
                 default:
                     JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
                     break;
