@@ -70,7 +70,7 @@ public class SHOPPING_Online {
                     showAdminPersonalInfo(username);
                     break;
                 case 1:
-                    JOptionPane.showMessageDialog(null, "Inventory selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                   showInventory(username);
                     break;
                 case 2:
                     isAdminRunning = false; 
@@ -137,4 +137,40 @@ public class SHOPPING_Online {
             }
         }
     }
+
+    private static void showInventory(String username){
+        boolean isInventoryRunning = true;
+
+        while (isInventoryRunning) {
+            Object[] options = {"View Inventory","Add Inventory", "Update Inventory", "Remove Inventory", "Back"};
+            int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Admin",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+            if (choice == JOptionPane.CLOSED_OPTION) {
+                System.exit(0); 
+            }
+
+            switch (choice) {
+                case 0:
+                JOptionPane.showMessageDialog(null, "Inventory selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Inventory selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "Inventory selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE); 
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Inventory selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                case 4:
+                    showAdminMainMenu(username);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
+                    break;
+            }
+        }
+    }
+
 }
