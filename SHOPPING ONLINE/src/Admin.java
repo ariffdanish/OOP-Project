@@ -5,6 +5,10 @@ public class Admin{
     private String aPhone;
     private Inventory inventory = new Inventory();
 
+    public Admin(){
+
+    }
+
     public Admin(int id, String n, String e, String p){
         aId=id;
         aName=n;
@@ -44,13 +48,9 @@ public class Admin{
         return aPhone;
     }
 
-    public void displayAdmin(){
+    public String displayAdmin(){
 
-        System.out.println("Admin Infomation: ");
-        System.out.println("ID: "+aId);
-        System.out.println("Name: "+aName);
-        System.out.println("Email: "+aEmail);
-        System.out.println("Phone Number: "+aPhone);
+        return "Admin Information \n\nID: " + getId() + "\nName: " + getName() + "\nEmail: " + getEmail() + "\nPhone: " + getPhone();
     }
 
     public void addProduct(int id, String name, String description, double price, int quantity, String category) {

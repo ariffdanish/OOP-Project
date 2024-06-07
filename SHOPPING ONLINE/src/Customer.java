@@ -14,8 +14,20 @@ public class Customer {
         address = a;
     }
 
-    public String getName(){
+    public String getName() {
         return cname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getId(){
+        return cid;
     }
 
     public void displaycust()
