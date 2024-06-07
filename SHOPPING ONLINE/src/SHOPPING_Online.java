@@ -12,22 +12,26 @@ public class SHOPPING_Online {
     };
 
     public static void main(String[] args) {
-       
-        String username = JOptionPane.showInputDialog(null, "Enter your username:\n(Username for admin - john)\n(Username for customer - jazz)", "Login", JOptionPane.PLAIN_MESSAGE);
+        boolean isRunning = true;
 
-     
-        if (username != null && !username.trim().isEmpty()) {
-            if (isValidAdmin(username)) {
-                JOptionPane.showMessageDialog(null, "Welcome, " + username + "!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-                showAdminMainMenu(username);
-            } else if (isValidCustomer(username)) {
-                JOptionPane.showMessageDialog(null, "Welcome, " + username + "!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-                showCustomerMainMenu(username);
+        while (isRunning) {
+            String username = JOptionPane.showInputDialog(null, "Enter your username:\n(Username for admin - john)\n(Username for customer - jazz)", "Login", JOptionPane.PLAIN_MESSAGE);
+
+            if (username == null) {
+                System.exit(0);
+            } else if (!username.trim().isEmpty()) {
+                if (isValidAdmin(username)) {
+                    JOptionPane.showMessageDialog(null, "Welcome, " + username + "!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                    showAdminMainMenu(username);
+                } else if (isValidCustomer(username)) {
+                    JOptionPane.showMessageDialog(null, "Welcome, " + username + "!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                    showCustomerMainMenu(username);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid username.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Invalid username.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Username cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Username cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -50,50 +54,67 @@ public class SHOPPING_Online {
     }
 
     private static void showAdminMainMenu(String username) {
-        Object[] options = {"Personal Info", "Inventory","Logout"};
-        int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Admin",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        boolean isAdminRunning = true;
 
-        switch (choice) {
-            case 0:
-                showAdminPersonalInfo(username);
-                showAdminMainMenu(username); 
-                break;
-            case 1:
-                JOptionPane.showMessageDialog(null, "Inventory selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
-                showAdminMainMenu(username); 
-                break;
-            case 2:
-            String[] s=new String[1];
-            main(s);
-             break;
-            default:
-                JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
-                break;
+        while (isAdminRunning) {
+            Object[] options = {"Personal Info", "Inventory", "Logout", "Exit"};
+            int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Admin",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+            if (choice == JOptionPane.CLOSED_OPTION) {
+                System.exit(0); 
+            }
+
+            switch (choice) {
+                case 0:
+                    showAdminPersonalInfo(username);
+                    break;
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Inventory selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                case 2:
+                    isAdminRunning = false; 
+                    break;
+                case 3:
+                    System.exit(0); 
+                default:
+                    JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
+                    break;
+            }
         }
     }
 
     private static void showCustomerMainMenu(String username) {
-        Object[] options = {"Personal Info", "Browse Products", "View Cart"};
-        int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Customer",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        boolean isCustomerRunning = true;
 
-        switch (choice) {
-            case 0:
-                showCustomerPersonalInfo(username);
-                showCustomerMainMenu(username);
-                break;
-            case 1:
-                JOptionPane.showMessageDialog(null, "Browse Products selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
-                showCustomerMainMenu(username);
-                break;
-            case 2:
-                JOptionPane.showMessageDialog(null, "View Cart selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
-                showCustomerMainMenu(username);
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
-                break;
+        while (isCustomerRunning) {
+            Object[] options = {"Personal Info", "Browse Products", "Shopping Cart", "Logout", "Exit"};
+            int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Customer",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+            if (choice == JOptionPane.CLOSED_OPTION) {
+                System.exit(0);
+            }
+
+            switch (choice) {
+                case 0:
+                    showCustomerPersonalInfo(username);
+                    break;
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Browse Products selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "View Cart selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                case 3:
+                    isCustomerRunning = false; 
+                    break;
+                case 4:
+                    System.exit(0);
+                default:
+                    JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
+                    break;
+            }
         }
     }
 
