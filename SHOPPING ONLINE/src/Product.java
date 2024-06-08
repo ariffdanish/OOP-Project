@@ -63,12 +63,16 @@ public class Product {
         this.category = category;
     }
 
-    public void displayInfo(){
+    
+    public String displayInfo(){
+       return "ID: "+id+"\nName: "+name+"\nDescription: "+description+"\nPrice: "+price+"\nQuantity: "+quantity+"\nCategory: "+category+"\n";
+    }
+
+    /*public void displayInfo(){
         System.out.println("ID: " + id);
         System.out.println("Name: " + name);
         System.out.println("Description: " + description);
         System.out.println("Price: " + price);
         System.out.println("Quantity: " + quantity);
-        System.out.println("Category: " + category);
-    }
+        System.out.println("Category: " + category);*/
 }

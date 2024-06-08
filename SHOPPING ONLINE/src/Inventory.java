@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Inventory {
     private List<Product> products;
 
@@ -13,6 +14,7 @@ public class Inventory {
 
     public void addProduct(Product product) {
         products.add(product);
+        
     }
 
     public void removeProduct(Product product) {
@@ -45,12 +47,20 @@ public class Inventory {
         }
     }
 
-    public void displayInventory(){
+    public void displayInventory() {
         for (Product product: products){
             product.displayInfo();
             System.out.println();
-        }
     }
 
+    }
 
+    /*public String displayInventory() {
+        StringBuilder inventoryInfo = new StringBuilder();
+        for (Product product : products) {
+            String s = product.displayInfo();
+            inventoryInfo.append(s).append("\n");
+        }
+        return inventoryInfo.toString(); 
+    }*/
 }
