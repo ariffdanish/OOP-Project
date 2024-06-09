@@ -15,11 +15,8 @@ public class SHOPPING_Online {
         new Customer(556, "jazz", "Jazz2@gmail.com", "No10, Jalan angkasa,Taman angkasa,4567 Johor Bahru")
     };
 
-    private static Inventory iv = new Inventory(new ArrayList<>());
-
-    private static final File file_= new File ("inventory.txt");
+    private static File file_=new File("inventory.txt");
     
-
     public static void main(String[] args) {
         boolean isRunning = true;
 
@@ -70,6 +67,7 @@ public class SHOPPING_Online {
         boolean isAdminRunning = true;
 
         while (isAdminRunning) {
+    
             Object[] options = {"Personal Info", "Inventory", "Logout", "Exit"};
             int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Admin",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
@@ -158,10 +156,10 @@ public class SHOPPING_Online {
             Object[] options = {"View Inventory", "Add Product", "Update Inventory", "Remove Product", "Back"};
             int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Admin",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-
-            if (choice == JOptionPane.CLOSED_OPTION) {
-                System.exit(0);
-            }
+                   
+                    if (choice == JOptionPane.CLOSED_OPTION) {
+                        System.exit(0);
+                    }
 
             switch (choice) {
                 case 0:
@@ -185,8 +183,7 @@ public class SHOPPING_Online {
                     showAdminMainMenu(username,a);
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
-                    break;
+                   return;
             }
         }
     }
