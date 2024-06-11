@@ -1,20 +1,18 @@
-import java.util.ArrayList;
 import java.util.List;
 
-
-public class Inventory {
+class Inventory {
     private List<Product> products;
 
-    public Inventory(){
-        
-    }
-   Inventory(List<Product> products) {
-        this.products = new ArrayList<Product>();
+    public Inventory(List<Product> products) {
+        this.products = products;
     }
 
     public void addProduct(Product product) {
         products.add(product);
-        
+    }
+
+    public List<Product> getProducts() {
+        return products;
     }
 
     public void removeProduct(Product product) {
@@ -30,37 +28,36 @@ public class Inventory {
         return 0;
     }
 
-    public boolean checkAvailabilityProduct(int productId){
+    public boolean checkAvailabilityProduct(int productId) {
         for (Product product : products) {
             if (product.getId() == productId) {
-                return product.getQuantity()>0;
+                return product.getQuantity() > 0;
             }
-        } return false;
+        }
+        return false;
     }
 
-    public void updateProduct(Product product){
-        for (int i=0; i<products.size(); i++){
-            if (products.get(i).getId() == product.getId()){
+    public void updateProduct(Product product) {
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == product.getId()) {
                 products.set(i, product);
                 break;
             }
         }
     }
 
-    public void displayInventory() {
-        for (Product product: products){
-            product.displayInfo();
-            System.out.println();
-    }
-
-    }
-
-    /*public String displayInventory() {
-        StringBuilder inventoryInfo = new StringBuilder();
+    public Product findProductById(int productId) {
         for (Product product : products) {
-            String s = product.displayInfo();
-            inventoryInfo.append(s).append("\n");
+            if (product.getId() == productId) {
+                return product;
+            }
         }
-        return inventoryInfo.toString(); 
-    }*/
+        return null;
+    }
+
+    public void displayInventory() {
+        for (Product product : products) {
+            System.out.println(product.displayInfo());
+        }
+    }
 }

@@ -1,10 +1,7 @@
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.io.*;
+
 
 public class SHOPPING_Online {
-
     private static Admin[] admins = {
         new Admin(123, "john", "John@gmail.com", "01123456"),
         new Admin(356, "brandon", "Brandon@gmail.com", "08765678")
@@ -15,8 +12,6 @@ public class SHOPPING_Online {
         new Customer(556, "jazz", "Jazz2@gmail.com", "No10, Jalan angkasa,Taman angkasa,4567 Johor Bahru")
     };
 
-    private static File file_=new File("inventory.txt");
-    
     public static void main(String[] args) {
         boolean isRunning = true;
 
@@ -63,17 +58,16 @@ public class SHOPPING_Online {
         return false;
     }
 
-    private static void showAdminMainMenu(String username,Admin a) {
+    private static void showAdminMainMenu(String username, Admin admin) {
         boolean isAdminRunning = true;
 
         while (isAdminRunning) {
-    
             Object[] options = {"Personal Info", "Inventory", "Logout", "Exit"};
             int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Admin",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
             if (choice == JOptionPane.CLOSED_OPTION) {
-                System.exit(0); 
+                System.exit(0);
             }
 
             switch (choice) {
@@ -81,13 +75,13 @@ public class SHOPPING_Online {
                     showAdminPersonalInfo(username);
                     break;
                 case 1:
-                    showInventory(username,a);
+                    showInventory(username, admin);
                     break;
                 case 2:
-                    isAdminRunning = false; 
+                    isAdminRunning = false;
                     break;
                 case 3:
-                    System.exit(0); 
+                    System.exit(0);
                 default:
                     JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
                     break;
@@ -118,7 +112,7 @@ public class SHOPPING_Online {
                     JOptionPane.showMessageDialog(null, "View Cart selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 case 3:
-                    isCustomerRunning = false; 
+                    isCustomerRunning = false;
                     break;
                 case 4:
                     System.exit(0);
@@ -149,57 +143,57 @@ public class SHOPPING_Online {
         }
     }
 
-    private static void showInventory(String username, Admin a) {
+    private static void showInventory(String username, Admin admin) {
         boolean isInventoryRunning = true;
 
         while (isInventoryRunning) {
             Object[] options = {"View Inventory", "Add Product", "Update Inventory", "Remove Product", "Back"};
             int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Admin",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                   
-                    if (choice == JOptionPane.CLOSED_OPTION) {
-                        System.exit(0);
-                    }
+
+            if (choice == JOptionPane.CLOSED_OPTION) {
+                System.exit(0);
+            }
 
             switch (choice) {
                 case 0:
-                    viewInventory(a);
-                    showInventory(username,a);
+                    viewInventory(admin);
+                    showInventory(username, admin);
                     break;
                 case 1:
-                    addProduct(a);
-                    showInventory(username,a);
+                    addProduct(admin);
+                    showInventory(username, admin);
                     break;
                 case 2:
                     JOptionPane.showMessageDialog(null, "Update Inventory selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
-                    showInventory(username,a);
+                    showInventory(username, admin);
                     break;
                 case 3:
-                    JOptionPane.showMessageDialog(null, "Remove Product selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
-                    showInventory(username,a);
+                    removeProduct(admin);
+                    showInventory(username, admin);
                     break;
                 case 4:
-                    isInventoryRunning = false; 
-                    showAdminMainMenu(username,a);
+                    isInventoryRunning = false;
+                    showAdminMainMenu(username, admin);
                     break;
                 default:
-                   return;
+                    return;
             }
         }
     }
 
-    private static void addProduct(Admin a) {
+    private static void addProduct(Admin admin) {
         int id = 0;
         String name = null;
         String description = null;
         double price = 0.0;
         int quantity = 0;
         String category = null;
-    
+
         while (true) {
             String idInput = JOptionPane.showInputDialog("Enter the product ID:");
             if (idInput == null) {
-                return; 
+                return;
             }
             try {
                 id = Integer.parseInt(idInput);
@@ -208,11 +202,11 @@ public class SHOPPING_Online {
                 JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product ID.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    
+
         while (true) {
             name = JOptionPane.showInputDialog("Enter the product Name:");
             if (name == null) {
-                return; 
+                return;
             }
             if (!name.trim().isEmpty()) {
                 break;
@@ -220,11 +214,11 @@ public class SHOPPING_Online {
                 JOptionPane.showMessageDialog(null, "Product name cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    
+
         while (true) {
             description = JOptionPane.showInputDialog("Enter the product Description:");
             if (description == null) {
-                return; 
+                return;
             }
             if (!description.trim().isEmpty()) {
                 break;
@@ -232,11 +226,11 @@ public class SHOPPING_Online {
                 JOptionPane.showMessageDialog(null, "Product description cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    
+
         while (true) {
             String priceInput = JOptionPane.showInputDialog("Enter the product Price:");
             if (priceInput == null) {
-                return; 
+                return;
             }
             try {
                 price = Double.parseDouble(priceInput);
@@ -245,11 +239,11 @@ public class SHOPPING_Online {
                 JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product price.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    
+
         while (true) {
             String quantityInput = JOptionPane.showInputDialog("Enter the product Quantity:");
             if (quantityInput == null) {
-                return; 
+                return;
             }
             try {
                 quantity = Integer.parseInt(quantityInput);
@@ -258,11 +252,11 @@ public class SHOPPING_Online {
                 JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product quantity.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    
+
         while (true) {
             category = JOptionPane.showInputDialog("Enter the product Category:");
             if (category == null) {
-                return; 
+                return;
             }
             if (!category.trim().isEmpty()) {
                 break;
@@ -270,16 +264,32 @@ public class SHOPPING_Online {
                 JOptionPane.showMessageDialog(null, "Product category cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    
-       Product pd = new Product(id, name, description, price, quantity, category);
-        a.addProduct(pd);
-       
+
+        Product pd = new Product(id, name, description, price, quantity, category);
+        admin.addProduct(pd);
     }
 
-    private static void viewInventory(Admin a) {
-       a.viewProduct();
+    private static void removeProduct(Admin admin) {
+        int productId = 0;
+
+        while (true) {
+            String idInput = JOptionPane.showInputDialog("Enter the product ID to remove:");
+            if (idInput == null) {
+                return;
+            }
+            try {
+                productId = Integer.parseInt(idInput);
+                break;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product ID.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        admin.removeProduct(productId);
     }
-    
-    
-    
+
+    private static void viewInventory(Admin admin) {
+        admin.viewProduct();
+    }
 }
+
