@@ -65,7 +65,7 @@ public class Product {
 
     
     public String displayInfo(){
-       return "ID: "+id+" Name: "+name+" Description: "+description+" Price: "+price+" Quantity: "+quantity+" Category: "+category+"\n";
+       return "ID: "+id+" Name: "+name+" Description: "+description+" Price: "+price+" Quantity: "+quantity+" Category: "+category;
     }
 
     /*public void displayInfo(){

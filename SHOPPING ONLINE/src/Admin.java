@@ -91,34 +91,33 @@ class Admin {
     }
 
     public void loadProductsFromFile() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(file_))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (!line.trim().isEmpty()) {
-                    String[] parts = line.split(" ");
-                    if (parts.length == 12) {
-                        try {
-                            int id = Integer.parseInt(parts[1]);
-                            String name = parts[3];
-                            String description = parts[5];
-                            double price = Double.parseDouble(parts[7]);
-                            int quantity = Integer.parseInt(parts[9]);
-                            String category = parts[11];
-                            Product product = new Product(id, name, description, price, quantity, category);
-                            inventory.addProduct(product);
-                        } catch (NumberFormatException e) {
-                            System.err.println("Error parsing product data: " + line);
-                        }
-                    } else {
-                        System.err.println("Invalid product data: " + line);
-                    }
+        try (Scanner scanner = new Scanner(file_)) {
+            while (scanner.hasNext()) {
+                try {
+                    scanner.next();
+                        int id = scanner.nextInt();
+                        scanner.next(); 
+                        String name = scanner.next();
+                        scanner.next(); 
+                        String description = scanner.next();
+                        scanner.next(); 
+                        double price = scanner.nextDouble();
+                        scanner.next(); 
+                        int quantity = scanner.nextInt();
+                        scanner.next(); 
+                        String category = scanner.next();
+                        Product product = new Product(id, name, description, price, quantity, category);
+                        inventory.addProduct(product);
+                 
+                } catch (NoSuchElementException e) {
+                    System.err.println("Error parsing product data: " + e.getMessage());
+                    break;
                 }
             }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Error reading file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "File not found: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
     public void viewProduct() {
         StringBuilder inventoryInfo = new StringBuilder("Inventory:\n");
         for (Product product : inventory.getProducts()) {
