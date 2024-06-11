@@ -2,5 +2,5 @@ ID: 22 Name: 22 Description: 22 Price: 22.0 Quantity: 22 Category: 22
 
 ID: 33 Name: 33 Description: 33 Price: 33.0 Quantity: 33 Category: 33
 
-ID: 555 Name: paper Description: A4 Price: 1.0 Quantity: 500 Category: 555
+ID: 555 Name: paper Description: A4 Price: 500.0 Quantity: 500 Category: paper
 
