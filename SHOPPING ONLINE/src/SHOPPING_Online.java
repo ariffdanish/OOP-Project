@@ -8,7 +8,7 @@ public class SHOPPING_Online {
     };
 
     private static Customer[] customers = {
-        new Customer(678, "bolt", "Bolt@gmail.com", "No5, Jalan meranti,Taman meranti,4567 Johor Bahru"),
+        new Customer(678, "boltz", "Bolt@gmail.com", "No5, Jalan meranti,Taman meranti,4567 Johor Bahru"),
         new Customer(556, "jazz", "Jazz2@gmail.com", "No10, Jalan angkasa,Taman angkasa,4567 Johor Bahru")
     };
 
