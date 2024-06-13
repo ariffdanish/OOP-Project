@@ -12,6 +12,12 @@ public class SHOPPING_Online {
         new Customer(556, "jazz", "Jazz2@gmail.com", "No10, Jalan angkasa,Taman angkasa,4567 Johor Bahru")
     };
 
+    private static Category[] category = {
+        new Category(100,"Food", "All the food product will in this category"),
+        new Category(200,"Cloth", "All the cloth product will in this category"),
+        new Category(300,"Accessories", "All the Accessories product will in this category")
+    };
+
     public static void main(String[] args) {
         boolean isRunning = true;
 
@@ -161,7 +167,7 @@ public class SHOPPING_Online {
                     showInventory(username, admin);
                     break;
                 case 1:
-                    addProduct(admin);
+                    addProduct(username,admin);
                     showInventory(username, admin);
                     break;
                 case 2:
@@ -182,13 +188,48 @@ public class SHOPPING_Online {
         }
     }
 
-    private static void addProduct(Admin admin) {
+    private static void addProduct(String username, Admin admin){
+        boolean isAddProductRunning = true;
+
+        while (isAddProductRunning) {
+            Object[] options = {"Add Food", "Add Cloth", "Add Accessories", "Back"};
+            int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Admin",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+            if (choice == JOptionPane.CLOSED_OPTION) {
+                System.exit(0);
+            }
+
+            switch (choice) {
+                case 0:
+                    addFood(admin);
+                    addProduct(username, admin);
+                    break;
+                case 1:
+                    addCloth(admin);
+                    addProduct(username, admin);
+                    break;
+                case 2:
+                    addAccessories(admin);
+                    addProduct(username, admin);
+                    break;
+                case 3:
+                    isAddProductRunning = false;
+                    showInventory(username,admin);
+                    break;
+                default:
+                    return;
+            }
+        }
+    }
+
+    private static void addFood(Admin admin) {
         int id = 0;
         String name = null;
         String description = null;
         double price = 0.0;
         int quantity = 0;
-        String category = null;
+        String category = "Food";
 
         while (true) {
             String idInput = JOptionPane.showInputDialog("Enter the product ID:");
@@ -204,7 +245,7 @@ public class SHOPPING_Online {
         }
 
         while (true) {
-            name = JOptionPane.showInputDialog("Enter the product Name:");
+            name = JOptionPane.showInputDialog("Enter the product Name(No Spacing):");
             if (name == null) {
                 return;
             }
@@ -216,7 +257,7 @@ public class SHOPPING_Online {
         }
 
         while (true) {
-            description = JOptionPane.showInputDialog("Enter the product Description:");
+            description = JOptionPane.showInputDialog("Enter the product Description(No Spacing):");
             if (description == null) {
                 return;
             }
@@ -253,15 +294,153 @@ public class SHOPPING_Online {
             }
         }
 
+        Product pd = new Product(id, name, description, price, quantity, category);
+        admin.addProduct(pd);
+    }
+
+    private static void addCloth(Admin admin) {
+        int id = 0;
+        String name = null;
+        String description = null;
+        double price = 0.0;
+        int quantity = 0;
+        String category = "Cloth";
+
         while (true) {
-            category = JOptionPane.showInputDialog("Enter the product Category:");
-            if (category == null) {
+            String idInput = JOptionPane.showInputDialog("Enter the product ID:");
+            if (idInput == null) {
                 return;
             }
-            if (!category.trim().isEmpty()) {
+            try {
+                id = Integer.parseInt(idInput);
+                break;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product ID.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        while (true) {
+            name = JOptionPane.showInputDialog("Enter the product Name(No Spacing):");
+            if (name == null) {
+                return;
+            }
+            if (!name.trim().isEmpty()) {
                 break;
             } else {
-                JOptionPane.showMessageDialog(null, "Product category cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Product name cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        while (true) {
+            description = JOptionPane.showInputDialog("Enter the product Description(No Spacing):");
+            if (description == null) {
+                return;
+            }
+            if (!description.trim().isEmpty()) {
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "Product description cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        while (true) {
+            String priceInput = JOptionPane.showInputDialog("Enter the product Price:");
+            if (priceInput == null) {
+                return;
+            }
+            try {
+                price = Double.parseDouble(priceInput);
+                break;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product price.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        while (true) {
+            String quantityInput = JOptionPane.showInputDialog("Enter the product Quantity:");
+            if (quantityInput == null) {
+                return;
+            }
+            try {
+                quantity = Integer.parseInt(quantityInput);
+                break;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product quantity.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        Product pd = new Product(id, name, description, price, quantity, category);
+        admin.addProduct(pd);
+    }
+
+    private static void addAccessories(Admin admin) {
+        int id = 0;
+        String name = null;
+        String description = null;
+        double price = 0.0;
+        int quantity = 0;
+        String category = "Accessories";
+
+        while (true) {
+            String idInput = JOptionPane.showInputDialog("Enter the product ID:");
+            if (idInput == null) {
+                return;
+            }
+            try {
+                id = Integer.parseInt(idInput);
+                break;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product ID.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        while (true) {
+            name = JOptionPane.showInputDialog("Enter the product Name(No Spacing):");
+            if (name == null) {
+                return;
+            }
+            if (!name.trim().isEmpty()) {
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "Product name cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        while (true) {
+            description = JOptionPane.showInputDialog("Enter the product Description(No Spacing):");
+            if (description == null) {
+                return;
+            }
+            if (!description.trim().isEmpty()) {
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "Product description cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        while (true) {
+            String priceInput = JOptionPane.showInputDialog("Enter the product Price:");
+            if (priceInput == null) {
+                return;
+            }
+            try {
+                price = Double.parseDouble(priceInput);
+                break;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product price.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        while (true) {
+            String quantityInput = JOptionPane.showInputDialog("Enter the product Quantity:");
+            if (quantityInput == null) {
+                return;
+            }
+            try {
+                quantity = Integer.parseInt(quantityInput);
+                break;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product quantity.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 

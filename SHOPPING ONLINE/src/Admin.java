@@ -124,7 +124,7 @@ class Admin {
             inventoryInfo.append(product.displayInfo()).append("\n");
         }
 
-        JTextArea textArea = new JTextArea(10, 30);
+        JTextArea textArea = new JTextArea(10, 60);
         textArea.setEditable(false);
         textArea.setText(inventoryInfo.toString());
 
