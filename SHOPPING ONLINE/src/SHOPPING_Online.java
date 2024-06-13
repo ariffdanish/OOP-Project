@@ -192,7 +192,7 @@ public class SHOPPING_Online {
         boolean isAddProductRunning = true;
 
         while (isAddProductRunning) {
-            Object[] options = {"Add Food", "Add Cloth", "Add Accessories", "Back"};
+            Object[] options = {"Add Food", "Add Apparel", "Add Accessory", "Back"};
             int choice = JOptionPane.showOptionDialog(null, "Select the category to add:", "Online Shopping - Admin",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
@@ -304,7 +304,7 @@ public class SHOPPING_Online {
         String description = null;
         double price = 0.0;
         int quantity = 0;
-        String category = "Cloth";
+        String category = "Apparel";
 
         while (true) {
             String idInput = JOptionPane.showInputDialog("Enter the product ID:");
@@ -379,7 +379,7 @@ public class SHOPPING_Online {
         String description = null;
         double price = 0.0;
         int quantity = 0;
-        String category = "Accessories";
+        String category = "Accessory";
 
         while (true) {
             String idInput = JOptionPane.showInputDialog("Enter the product ID:");
@@ -471,7 +471,7 @@ public class SHOPPING_Online {
         int productId = 0;
 
         while (true) {
-            String idInput = JOptionPane.showInputDialog("Enter the product ID to update the Information:");
+            String idInput = JOptionPane.showInputDialog("Enter the product ID to update the product information:");
             if (idInput == null) {
                 return;
             }
