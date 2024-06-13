@@ -145,9 +145,12 @@ class Admin {
                     JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product quantity.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
-    
-            Product updatedProduct = new Product(id, name, description, price, quantity, category);
-            inventory.updateProduct(updatedProduct);
+
+            product.setId(id);
+            product.setName(name);
+            product.setDescription(description);
+            product.setPrice(price);
+            product.setQuantity(quantity);
             updateInventoryFile();
         } else {
             JOptionPane.showMessageDialog(null, "Product not found.", "Error", JOptionPane.ERROR_MESSAGE);
