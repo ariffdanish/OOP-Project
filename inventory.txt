@@ -1,4 +1,4 @@
 ID: 101 Name: kitkat Description: chocolateBar Price: 4.0 Quantity: 100 Category: Food
 ID: 201 Name: poloShirt Description: white Price: 70.0 Quantity: 50 Category: Cloth
 ID: 301 Name: adidasBag Description: blue Price: 70.0 Quantity: 150 Category: Accessories
-ID: 11 Name: 11 Description: 11 Price: 11.0 Quantity: 11 Category: Cloth
+ID: 11 Name: 22 Description: 22 Price: 11.0 Quantity: 11 Category: Cloth

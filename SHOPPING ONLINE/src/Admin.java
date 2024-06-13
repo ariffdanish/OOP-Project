@@ -70,6 +70,91 @@ class Admin {
         }
     }
 
+    public void updateInventory(int productId) {
+        Product product = inventory.findProductById(productId);
+    
+        if (product != null) {
+            int id = product.getId();
+            String name = product.getName();
+            String description = product.getDescription();
+            double price = product.getPrice();
+            int quantity = product.getQuantity();
+            String category = product.getCategory();
+    
+            while (true) {
+                String idInput = JOptionPane.showInputDialog("Enter the product ID (default: " + id + "):");
+                if (idInput == null || idInput.trim().isEmpty()) {
+                    break;
+                }
+                try {
+                    id = Integer.parseInt(idInput);
+                    break;
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product ID.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+    
+            while (true) {
+                String nameInput = JOptionPane.showInputDialog("Enter the product Name (default: " + name + ")(No Spacing):");
+                if (nameInput == null || nameInput.trim().isEmpty()) {
+                    break;  
+                }
+                if (!nameInput.trim().isEmpty()) {
+                    name = nameInput;
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Product name cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+    
+            while (true) {
+                String descriptionInput = JOptionPane.showInputDialog("Enter the product Description (default: " + description + ")(No Spacing):");
+                if (descriptionInput == null || descriptionInput.trim().isEmpty()) {
+                    break; 
+                }
+                if (!descriptionInput.trim().isEmpty()) {
+                    description = descriptionInput;
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Product description cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+    
+            while (true) {
+                String priceInput = JOptionPane.showInputDialog("Enter the product Price (default: " + price + "):");
+                if (priceInput == null || priceInput.trim().isEmpty()) {
+                    break;  
+                }
+                try {
+                    price = Double.parseDouble(priceInput);
+                    break;
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product price.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+    
+            while (true) {
+                String quantityInput = JOptionPane.showInputDialog("Enter the product Quantity (default: " + quantity + "):");
+                if (quantityInput == null || quantityInput.trim().isEmpty()) {
+                    break;  
+                }
+                try {
+                    quantity = Integer.parseInt(quantityInput);
+                    break;
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product quantity.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+    
+            Product updatedProduct = new Product(id, name, description, price, quantity, category);
+            inventory.updateProduct(updatedProduct);
+            updateInventoryFile();
+        } else {
+            JOptionPane.showMessageDialog(null, "Product not found.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+
     public void removeProduct(int productId) {
         Product product = inventory.findProductById(productId);
         if (product != null) {

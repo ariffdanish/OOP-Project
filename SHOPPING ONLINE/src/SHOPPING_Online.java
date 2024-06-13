@@ -171,7 +171,7 @@ public class SHOPPING_Online {
                     showInventory(username, admin);
                     break;
                 case 2:
-                    JOptionPane.showMessageDialog(null, "Update Inventory selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
+                    updateInventory(admin);
                     showInventory(username, admin);
                     break;
                 case 3:
@@ -193,7 +193,7 @@ public class SHOPPING_Online {
 
         while (isAddProductRunning) {
             Object[] options = {"Add Food", "Add Cloth", "Add Accessories", "Back"};
-            int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Admin",
+            int choice = JOptionPane.showOptionDialog(null, "Select the category to add:", "Online Shopping - Admin",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
             if (choice == JOptionPane.CLOSED_OPTION) {
@@ -465,6 +465,24 @@ public class SHOPPING_Online {
         }
 
         admin.removeProduct(productId);
+    }
+
+    private static void updateInventory(Admin admin){
+        int productId = 0;
+
+        while (true) {
+            String idInput = JOptionPane.showInputDialog("Enter the product ID to update the Information:");
+            if (idInput == null) {
+                return;
+            }
+            try {
+                productId = Integer.parseInt(idInput);
+                break;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for product ID.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        admin.updateInventory(productId);
     }
 
     private static void viewInventory(Admin admin) {
