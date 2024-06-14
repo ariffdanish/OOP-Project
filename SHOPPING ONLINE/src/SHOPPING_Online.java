@@ -14,8 +14,8 @@ public class SHOPPING_Online {
 
     private static Category[] category = {
         new Category(100,"Food", "All the food product will in this category"),
-        new Category(200,"Cloth", "All the cloth product will in this category"),
-        new Category(300,"Accessories", "All the Accessories product will in this category")
+        new Category(200,"Apparel", "All the cloth product will in this category"),
+        new Category(300,"Accessory", "All the Accessories product will in this category")
     };
 
     public static void main(String[] args) {
@@ -229,7 +229,7 @@ public class SHOPPING_Online {
         String description = null;
         double price = 0.0;
         int quantity = 0;
-        String category = "Food";
+        String cg = category[0].getName();
 
         while (true) {
             String idInput = JOptionPane.showInputDialog("Enter the product ID:");
@@ -294,7 +294,7 @@ public class SHOPPING_Online {
             }
         }
 
-        Product pd = new Product(id, name, description, price, quantity, category);
+        Product pd = new Product(id, name, description, price, quantity, cg);
         admin.addProduct(pd);
     }
 
@@ -304,7 +304,7 @@ public class SHOPPING_Online {
         String description = null;
         double price = 0.0;
         int quantity = 0;
-        String category = "Apparel";
+        String cg = category[1].getName();
 
         while (true) {
             String idInput = JOptionPane.showInputDialog("Enter the product ID:");
@@ -369,7 +369,7 @@ public class SHOPPING_Online {
             }
         }
 
-        Product pd = new Product(id, name, description, price, quantity, category);
+        Product pd = new Product(id, name, description, price, quantity, cg);
         admin.addProduct(pd);
     }
 
@@ -379,7 +379,7 @@ public class SHOPPING_Online {
         String description = null;
         double price = 0.0;
         int quantity = 0;
-        String category = "Accessory";
+        String cg = category[2].getName();
 
         while (true) {
             String idInput = JOptionPane.showInputDialog("Enter the product ID:");
@@ -444,7 +444,7 @@ public class SHOPPING_Online {
             }
         }
 
-        Product pd = new Product(id, name, description, price, quantity, category);
+        Product pd = new Product(id, name, description, price, quantity, cg);
         admin.addProduct(pd);
     }
 
