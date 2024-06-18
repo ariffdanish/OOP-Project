@@ -1,15 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.*;
 
 
 public class SHOPPING_Online {
     private static Admin[] admins = {
-        new Admin(123, "john", "John@gmail.com", "01123456"),
-        new Admin(356, "brandon", "Brandon@gmail.com", "08765678")
+        new Admin(123, "JOHN", "John@gmail.com", "01123456"),
+        new Admin(356, "BRANDON", "Brandon@gmail.com", "08765678")
     };
 
     private static Customer[] customers = {
-        new Customer(678, "boltz", "Bolt@gmail.com", "No5, Jalan meranti,Taman meranti,4567 Johor Bahru"),
-        new Customer(556, "jazz", "Jazz2@gmail.com", "No10, Jalan angkasa,Taman angkasa,4567 Johor Bahru")
+        new Customer(678, "IMAN", "Bolt@gmail.com", "No5, Jalan meranti,Taman meranti,4567 Johor Bahru"),
+        new Customer(556, "KANE", "Jazz2@gmail.com", "No10, Jalan angkasa,Taman angkasa,4567 Johor Bahru")
     };
 
     private static Category[] category = {
@@ -22,7 +25,7 @@ public class SHOPPING_Online {
         boolean isRunning = true;
 
         while (isRunning) {
-            String username = JOptionPane.showInputDialog(null, "Enter your username:\n(Username for admin - john)\n(Username for customer - jazz)", "Login", JOptionPane.PLAIN_MESSAGE);
+            String username = JOptionPane.showInputDialog(null, "       ENTER REGISTERED USERNAME : \n         Please enter correct username !", "WELCOME TO THE NOVARIA SHOP", JOptionPane.PLAIN_MESSAGE);
 
             if (username == null) {
                 System.exit(0);
@@ -96,38 +99,83 @@ public class SHOPPING_Online {
     }
 
     private static void showCustomerMainMenu(String username) {
-        boolean isCustomerRunning = true;
+    boolean isCustomerRunning = true;
+    List<Product> cart = new ArrayList<>();
 
-        while (isCustomerRunning) {
-            Object[] options = {"Personal Info", "Browse Products", "Shopping Cart", "Logout", "Exit"};
-            int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Customer",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+    while (isCustomerRunning) {
+        Object[] options = {"Personal Info", "Browse Products", "View Cart", "Logout", "Exit"};
+        int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Customer",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
-            if (choice == JOptionPane.CLOSED_OPTION) {
+        if (choice == JOptionPane.CLOSED_OPTION) {
+            System.exit(0);
+        }
+
+        switch (choice) {
+            case 0:
+                showCustomerPersonalInfo(username);
+                break;
+            case 1:
+                browseProducts(cart);
+                break;
+            case 2:
+                viewCart(cart);
+                break;
+            case 3:
+                isCustomerRunning = false;
+                break;
+            case 4:
                 System.exit(0);
-            }
-
-            switch (choice) {
-                case 0:
-                    showCustomerPersonalInfo(username);
-                    break;
-                case 1:
-                    JOptionPane.showMessageDialog(null, "Browse Products selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
-                    break;
-                case 2:
-                    JOptionPane.showMessageDialog(null, "View Cart selected.", "Option Selected", JOptionPane.INFORMATION_MESSAGE);
-                    break;
-                case 3:
-                    isCustomerRunning = false;
-                    break;
-                case 4:
-                    System.exit(0);
-                default:
-                    JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
-                    break;
-            }
+            default:
+                JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
+                break;
         }
     }
+}
+
+private static void browseProducts(List<Product> cart) {
+    // Read products from inventory file
+    List<Product> products = readProductsFromInventory();
+
+    // Display products to customer
+    String productList = "";
+    for (int i = 0; i < products.size(); i++) {
+        productList += (i + 1) + ". " + products.get(i).getName() + " - " + products.get(i).getDescription() + " - $" + products.get(i).getPrice() + "\n";
+    }
+
+    String input = JOptionPane.showInputDialog(null, "Select a product to add to cart:\n" + productList, "Browse Products", JOptionPane.PLAIN_MESSAGE);
+
+    if (input!= null) {
+        int selection = Integer.parseInt(input) - 1;
+        if (selection >= 0 && selection < products.size()) {
+            Product selectedProduct = products.get(selection);
+            cart.add(selectedProduct);
+            JOptionPane.showMessageDialog(null, "Product added to cart: " + selectedProduct.getName(), "Product Added", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid selection.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+private static void viewCart(List<Product> cart) {
+    if (cart.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Your cart is empty.", "Cart Empty", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        String cartList = "";
+        for (Product product : cart) {
+            cartList += product.getName() + " - $" + product.getPrice() + "\n";
+        }
+        JOptionPane.showMessageDialog(null, "Your cart:\n" + cartList, "View Cart", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
+
+private static List<Product> readProductsFromInventory() {
+    List<Product> products = new ArrayList<>();
+    products.add(new Product(1, "Apple", "Fresh apple", 1.99, 10, "Food"));
+    products.add(new Product(2, "T-Shirt", "White T-Shirt", 19.99, 20, "Apparel"));
+    products.add(new Product(3, "Headphones", "Wireless headphones", 49.99, 15, "Accessory"));
+    return products;
+}
 
     private static void showAdminPersonalInfo(String username) {
         for (Admin admin : admins) {
