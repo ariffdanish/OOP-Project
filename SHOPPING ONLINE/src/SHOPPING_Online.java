@@ -148,14 +148,20 @@ private static void browseProducts(List<Product> cart) {
 
     String input = JOptionPane.showInputDialog(null, "Select a product to add to cart:\n" + productList, "Browse Products", JOptionPane.PLAIN_MESSAGE);
 
-    if (input!= null) {
-        int selection = Integer.parseInt(input) - 1;
-        if (selection >= 0 && selection < products.size()) {
-            Product selectedProduct = products.get(selection);
-            cart.add(selectedProduct);
-            JOptionPane.showMessageDialog(null, "Product added to cart: " + selectedProduct.getName(), "Product Added", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid selection.", "Error", JOptionPane.ERROR_MESSAGE);
+    if (input == null || input.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No product selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
+    } else {
+        try {
+            int selection = Integer.parseInt(input.trim()) - 1;
+            if (selection >= 0 && selection < products.size()) {
+                Product selectedProduct = products.get(selection);
+                cart.add(selectedProduct);
+                JOptionPane.showMessageDialog(null, "Product added to cart: " + selectedProduct.getName(), "Product Added", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid selection.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
