@@ -219,19 +219,19 @@ private static List<Product> readProductsFromInventory() {
                     break;
                 case 1:
                     addProduct(username,admin);
-                   // showInventory(username, admin);
+                   
                     break;
                 case 2:
                     updateInventory(admin);
-                   // showInventory(username, admin);
+                   
                     break;
                 case 3:
                     removeProduct(admin);
-                   // showInventory(username, admin);
+                   
                     break;
                 case 4:
                     isInventoryRunning = false;
-                   // showAdminMainMenu(username, admin);
+                
                     break;
                 default:
                     return;
@@ -254,19 +254,19 @@ private static List<Product> readProductsFromInventory() {
             switch (choice) {
                 case 0:
                     addFood(admin);
-                   // addProduct(username, admin);
+                   
                     break;
                 case 1:
                     addCloth(admin);
-                  //  addProduct(username, admin);
+                  
                     break;
                 case 2:
                     addAccessories(admin);
-                  //  addProduct(username, admin);
+                  
                     break;
                 case 3:
                     isAddProductRunning = false;
-                  //  showInventory(username,admin);
+               
                     break;
                 default:
                     return;
