@@ -22,6 +22,7 @@ public class SHOPPING_Online {
     };
 
     public static void main(String[] args) {
+        
         boolean isRunning = true;
 
         while (isRunning) {
@@ -134,8 +135,10 @@ public class SHOPPING_Online {
 }
 
 private static void browseProducts(List<Product> cart) {
+    Admin a = new Admin();
     // Read products from inventory file
-    List<Product> products = readProductsFromInventory();
+    List<Product> products = a.getInventory();
+
 
     // Display products to customer
     String productList = "";
@@ -216,19 +219,19 @@ private static List<Product> readProductsFromInventory() {
                     break;
                 case 1:
                     addProduct(username,admin);
-                    showInventory(username, admin);
+                   // showInventory(username, admin);
                     break;
                 case 2:
                     updateInventory(admin);
-                    showInventory(username, admin);
+                   // showInventory(username, admin);
                     break;
                 case 3:
                     removeProduct(admin);
-                    showInventory(username, admin);
+                   // showInventory(username, admin);
                     break;
                 case 4:
                     isInventoryRunning = false;
-                    showAdminMainMenu(username, admin);
+                   // showAdminMainMenu(username, admin);
                     break;
                 default:
                     return;
@@ -251,19 +254,19 @@ private static List<Product> readProductsFromInventory() {
             switch (choice) {
                 case 0:
                     addFood(admin);
-                    addProduct(username, admin);
+                   // addProduct(username, admin);
                     break;
                 case 1:
                     addCloth(admin);
-                    addProduct(username, admin);
+                  //  addProduct(username, admin);
                     break;
                 case 2:
                     addAccessories(admin);
-                    addProduct(username, admin);
+                  //  addProduct(username, admin);
                     break;
                 case 3:
                     isAddProductRunning = false;
-                    showInventory(username,admin);
+                  //  showInventory(username,admin);
                     break;
                 default:
                     return;

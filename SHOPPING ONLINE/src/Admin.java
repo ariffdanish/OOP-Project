@@ -221,4 +221,8 @@ class Admin {
 
         JOptionPane.showMessageDialog(null, scrollPane, "View Inventory", JOptionPane.PLAIN_MESSAGE);
     }
+
+    public List<Product> getInventory(){
+        return inventory.getProducts();
+    }
 }
