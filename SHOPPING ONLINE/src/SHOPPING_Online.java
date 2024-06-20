@@ -21,6 +21,14 @@ public class SHOPPING_Online {
         new Category(300,"Accessory", "All the Accessories product will in this category")
     };
 
+    private static Payment[] payment = {
+        new Payment("TNG eWallet"),
+        new Payment("Bank Islam"),
+        new Payment("RHB Bank"),
+        new Payment("CIMB Bank"),
+        new Payment("Public Bank")
+    };
+
     public static void main(String[] args) {
         
         boolean isRunning = true;
@@ -104,7 +112,7 @@ public class SHOPPING_Online {
     List<Product> cart = new ArrayList<>();
 
     while (isCustomerRunning) {
-        Object[] options = {"Personal Info", "Browse Products", "View Cart", "Logout", "Exit"};
+        Object[] options = {"Personal Info", "Browse Products", "View Cart","Payment", "Logout", "Exit"};
         int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Customer",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
@@ -123,9 +131,12 @@ public class SHOPPING_Online {
                 viewCart(cart);
                 break;
             case 3:
-                isCustomerRunning = false;
+                payment(cart);
                 break;
             case 4:
+                isCustomerRunning = false;
+                break;
+            case 5:
                 System.exit(0);
             default:
                 JOptionPane.showMessageDialog(null, "No option selected.", "No Selection", JOptionPane.WARNING_MESSAGE);
@@ -176,6 +187,64 @@ private static void viewCart(List<Product> cart) {
         }
         JOptionPane.showMessageDialog(null, "Your cart:\n" + cartList, "View Cart", JOptionPane.INFORMATION_MESSAGE);
     }
+}
+
+private static void payment(List<Product> cart){
+    double total=0;
+    for (Product product : cart) {
+        total += product.getPrice();
+    }
+    boolean paymentRunning = true;
+    while (paymentRunning){
+    Object[] options = {payment[0].getPaymentMethods(),payment[1].getPaymentMethods(),payment[2].getPaymentMethods() ,payment[3].getPaymentMethods(),payment[4].getPaymentMethods(),"Back"};
+        int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Customer",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+                switch (choice) {
+                    case 0:
+                        TNG(total,cart);
+                        break;
+                    case 1:
+                        bankIslam(total,cart);
+                        break;
+                    case 2:
+                       RhbBank(total,cart);
+                        break;
+                    case 3:
+                        CimbBank(total,cart);
+                        break;
+                    case 4:
+                       PublicBank(total,cart);
+                        break;
+                    case 5:
+                    paymentRunning=false;
+                        break;
+                    default:
+                    paymentRunning=false;
+                        break;
+                }
+            }
+}
+
+private static void TNG(double total,List<Product> cart){
+payment[0].setAmount(total);
+payment[0].paymentProcess(cart);
+}
+private static void bankIslam(double total,List<Product> cart){
+    payment[1].setAmount(total);
+    payment[1].paymentProcess(cart);
+}
+private static void RhbBank(double total,List<Product> cart){
+    payment[2].setAmount(total);
+    payment[2].paymentProcess(cart);
+}
+private static void CimbBank(double total,List<Product> cart){
+    payment[3].setAmount(total);
+    payment[3].paymentProcess(cart);
+}
+private static void PublicBank(double total,List<Product> cart){
+    payment[4].setAmount(total);
+    payment[4].paymentProcess(cart);
 }
 
 private static List<Product> readProductsFromInventory() {
