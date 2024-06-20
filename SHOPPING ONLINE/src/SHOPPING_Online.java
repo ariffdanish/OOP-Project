@@ -215,7 +215,6 @@ private static List<Product> readProductsFromInventory() {
             switch (choice) {
                 case 0:
                     viewInventory(admin);
-                    showInventory(username, admin);
                     break;
                 case 1:
                     addProduct(username,admin);
