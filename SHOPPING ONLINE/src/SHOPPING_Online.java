@@ -203,18 +203,23 @@ private static void payment(List<Product> cart){
                 switch (choice) {
                     case 0:
                         TNG(total,cart);
+                        paymentRunning=false;
                         break;
                     case 1:
                         bankIslam(total,cart);
+                        paymentRunning=false;
                         break;
                     case 2:
                        RhbBank(total,cart);
+                       paymentRunning=false;
                         break;
                     case 3:
-                        CimbBank(total,cart);
+                        CimbBank(total,cart); 
+                        paymentRunning=false;
                         break;
                     case 4:
                        PublicBank(total,cart);
+                       paymentRunning=false;
                         break;
                     case 5:
                     paymentRunning=false;
