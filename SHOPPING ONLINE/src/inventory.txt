@@ -5,3 +5,10 @@ Price: 5.6
 Quantity: 1
 Category: food
 
+ID: 123
+Name: kambing
+Description: erbueno
+Price: 5.6
+Quantity: 1
+Category: food
+

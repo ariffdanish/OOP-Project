@@ -3,6 +3,10 @@ import java.util.List;
 
 import javax.swing.*;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class SHOPPING_Online {
     private static Admin[] admins = {
@@ -190,20 +194,48 @@ private static void browseProducts(shoppingCart cart) {
 
 
 private static void viewCart(shoppingCart cart) {
-    if (cart.getTotalProducts() == 0) { // Method to get total number of products in cart
+    if (cart.getTotalProducts() == 0) {
         JOptionPane.showMessageDialog(null, "Your cart is empty.", "Cart Empty", JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
+
+    JPanel panel = new JPanel(new GridLayout(cart.getTotalProducts(), 1));
+
+    Product[] products = cart.getProducts();
+    for (int i = 0; i < cart.getTotalProducts(); i++) {
+        String productName = products[i].getName();
+        double productPrice = products[i].getPrice();
+
+        JPanel productPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        JLabel nameLabel = new JLabel("Product: " + productName + " - $" + productPrice);
+        productPanel.add(nameLabel);
+
+        JButton removeButton = new JButton("Remove");
+        int indexToRemove = i; // Capture index to remove in ActionListener
+
+        removeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cart.rmvProduct(products[indexToRemove]);
+                panel.removeAll(); // Clear panel content
+                viewCart(cart); // Refresh the cart view after removal
+            }
+        });
+        productPanel.add(removeButton);
+
+        panel.add(productPanel);
+    }
+
+    int option = JOptionPane.showConfirmDialog(null, panel, "View Cart", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+    if (option == JOptionPane.OK_OPTION) {
+        // User clicked OK, perform any actions if needed
     } else {
-        StringBuilder cartList = new StringBuilder();
-        Product[] products = cart.getProducts(); // Method to get products array from cart
-        for (int i = 0; i < cart.getTotalProducts(); i++) { // Iterate only through the number of added products
-            cartList.append(products[i].getName())
-                    .append(" - $")
-                    .append(products[i].getPrice())
-                    .append("\n");
-        }
-        JOptionPane.showMessageDialog(null, "Your cart:\n" + cartList.toString(), "View Cart", JOptionPane.INFORMATION_MESSAGE);
+        // User clicked Cancel or closed the dialog, perform cleanup or additional actions if needed
     }
 }
+
+
 
 
 private static void payment(shoppingCart cart) {
