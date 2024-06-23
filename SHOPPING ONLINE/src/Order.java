@@ -11,8 +11,10 @@ public class Order extends shoppingCart {
     }
 
     public void displayord() {
+        System.out.println("OFFICIAL RECEIPT");
         orditem.displayCart();
-        System.out.println("Total Cost: " + tcost);
+
+        System.out.println("\nTotal Cost: " + tcost);
         System.out.println("Order ID: " + orderId);
     }
 }
