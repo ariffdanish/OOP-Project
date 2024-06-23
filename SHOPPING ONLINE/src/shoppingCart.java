@@ -1,5 +1,4 @@
 public class shoppingCart {
-
     private Product[] pList = new Product[25];
     private float totalCost = 0;
     private int t = 0;
@@ -28,19 +27,31 @@ public class shoppingCart {
         }
     }
 
-    public void displayCart()
-    {
-        for(int i = 0;i<t;i++)
-        {
-            System.out.println("Product Name: "+pList[i].getName()+"\n Quantity: "+pList[i].getQuantity()+"\n Total: "+pList[i].getQuantity()*pList[i].getPrice());
+    public void displayCart() {
+        for (int i = 0; i < t; i++) {
+            System.out.println("Product Name: " + pList[i].getName() + "\n Quantity: " + pList[i].getQuantity() + "\n Total: " + pList[i].getQuantity() * pList[i].getPrice());
         }
     }
 
-    public float getcost()
-    {
+    public float getCost() {
         return totalCost;
     }
 
-   
-    
+    public int getTotalProducts() {
+        return t;
+    }
+
+    public Product[] getProducts() {
+        // Return a copy of the array with only the valid elements
+        Product[] products = new Product[t];
+        System.arraycopy(pList, 0, products, 0, t);
+        return products;
+    }
+    public void clear() {
+        for (int i = 0; i < t; i++) {
+            pList[i] = null;
+        }
+        totalCost = 0;
+        t = 0;
+    }
 }

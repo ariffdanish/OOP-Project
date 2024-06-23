@@ -4,16 +4,15 @@ public class Order extends shoppingCart {
     private float tcost;
     private shoppingCart orditem;
 
-    Order(int o, shoppingCart concart)
-    {
-        orderId = o;
-        orditem  = concart;
-        tcost = orditem.getcost();
+    public Order(int orderId, shoppingCart cart) {
+        this.orderId = orderId;
+        this.orditem = cart;
+        this.tcost = orditem.getCost();
     }
-    public void displayord()
-    {
-        displayCart();
-        System.out.println("Total Cost: "+tcost);
+
+    public void displayord() {
+        orditem.displayCart();
+        System.out.println("Total Cost: " + tcost);
+        System.out.println("Order ID: " + orderId);
     }
-    
 }
