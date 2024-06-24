@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
@@ -23,14 +22,6 @@ public class SHOPPING_Online {
         new Category(100,"Food", "All the food product will in this category"),
         new Category(200,"Apparel", "All the cloth product will in this category"),
         new Category(300,"Accessory", "All the Accessories product will in this category")
-    };
-
-    private static Payment[] payment = {
-        new Payment("TNG eWallet"),
-        new Payment("Bank Islam"),
-        new Payment("RHB Bank"),
-        new Payment("CIMB Bank"),
-        new Payment("Public Bank")
     };
 
     public static void main(String[] args) {
