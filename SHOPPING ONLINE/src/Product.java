@@ -63,10 +63,7 @@ public class Product {
         this.category = category;
     }
 
-    
     public String displayInfo(){
        return "ID: "+id+" Name: "+name+" Description: "+description+" Price: "+price+" Quantity: "+quantity+" Category: "+category;
     }
-
-   
 }
