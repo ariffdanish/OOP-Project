@@ -250,11 +250,11 @@ private static void payment(shoppingCart cart) {
     boolean paymentRunning = true;
     while (paymentRunning) {
         Object[] options = {
-            paymentMethods[0].getPaymentMethod(), 
-            paymentMethods[1].getPaymentMethod(), 
-            paymentMethods[2].getPaymentMethod(), 
-            paymentMethods[3].getPaymentMethod(), 
-            paymentMethods[4].getPaymentMethod(), 
+            paymentMethods[0].getPaymentMethods(), 
+            paymentMethods[1].getPaymentMethods(), 
+            paymentMethods[2].getPaymentMethods(), 
+            paymentMethods[3].getPaymentMethods(), 
+            paymentMethods[4].getPaymentMethods(), 
             "Back"
         };
         int choice = JOptionPane.showOptionDialog(null, "Select an option:", "Online Shopping - Customer",
@@ -317,15 +317,6 @@ private static void PublicBank(double total, shoppingCart cart, Payment[] paymen
 }
 
 
-
-
-private static List<Product> readProductsFromInventory() {
-    List<Product> products = new ArrayList<>();
-    products.add(new Product(1, "Apple", "Fresh apple", 1.99, 10, "Food"));
-    products.add(new Product(2, "T-Shirt", "White T-Shirt", 19.99, 20, "Apparel"));
-    products.add(new Product(3, "Headphones", "Wireless headphones", 49.99, 15, "Accessory"));
-    return products;
-}
 
     private static void showAdminPersonalInfo(String username) {
         for (Admin admin : admins) {
