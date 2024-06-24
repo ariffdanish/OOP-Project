@@ -1,14 +1,4 @@
-ID: 123
-Name: coklat
-Description: kiderbueno
-Price: 5.6
-Quantity: 1
-Category: food
-
-ID: 123
-Name: kambing
-Description: erbueno
-Price: 5.6
-Quantity: 1
-Category: food
-
+ID: 123 Name: coklat Description: kiderbueno Price: 5.6 Quantity: 1 Category: food
+ID: 123 Name: kambing Description: erbueno Price: 5.6 Quantity: 1 Category: food
+ID: 134 Name: N.GORENG Description: Nasi Goreng Cina Price: 9.8 Quantity: 1 Category: Food
+ID: 123 Name: JAM Description: Jam Tangan Price: 300.0 Quantity: 1 Category: Accessory
