@@ -68,11 +68,5 @@ public class Product {
        return "ID: "+id+" Name: "+name+" Description: "+description+" Price: "+price+" Quantity: "+quantity+" Category: "+category;
     }
 
-    /*public void displayInfo(){
-        System.out.println("ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Description: " + description);
-        System.out.println("Price: " + price);
-        System.out.println("Quantity: " + quantity);
-        System.out.println("Category: " + category);*/
+   
 }
