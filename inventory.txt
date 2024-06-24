@@ -4,3 +4,4 @@ ID: 301 Name: adidasBag Description: blue Price: 70.0 Quantity: 150 Category: Ac
 ID: 102 Name: MisterPotato Description: Tomato Price: 3.5 Quantity: 100 Category: Food
 ID: 202 Name: H&MJeans Description: RegularFit Price: 100.0 Quantity: 50 Category: Apparel
 ID: 302 Name: WirelessSpeaker Description: black Price: 80.0 Quantity: 60 Category: Accessory
+ID: 11 Name: 22 Description: 22 Price: 22.0 Quantity: 22 Category: Apparel

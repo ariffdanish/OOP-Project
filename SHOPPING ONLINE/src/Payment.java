@@ -26,7 +26,7 @@ public class Payment {
 
 
     public void paymentProcess(List<Product> cart) {
-        String message = "Processing payment of amount: " + amount + " using " + paymentMethod + "\nPress OK to confirm payment and Press CANCEL to cancel the payment";
+        String message = "Processing payment of amount: $" + amount + " using " + paymentMethod + "\nPress OK to confirm payment and Press CANCEL to cancel the payment";
         int response = JOptionPane.showConfirmDialog(null, message, "Make Payment", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
     
         if (response == JOptionPane.OK_OPTION) {
